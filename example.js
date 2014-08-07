@@ -18,14 +18,14 @@ var companyMapping = function(config) {
 
 var driver = MemoryDriver.create({
   data: {
-    'companies': {
-      '1': { name: 'Postini', founded_year: 1999, total_money_raised: '$0' },
-      '2': { name: 'Digg', founded_year: 2004, total_money_raised: '$45M' },
-      '3': { name: 'Airbnb', founded_year: 2007, total_money_raised: '$120M' },
-      '4': { name: 'TripIt', founded_year: 2006, total_money_raised: '$13.1M' },
-      '5': { name: 'Twitter', founded_year: 2006, total_money_raised: '$1.16B' },
-      '6': { name: 'Spotify', founded_year: 2006, total_money_raised: '$183M' },
-      '7': { name: 'Airbnb', founded_year: 2008, total_money_raised: '$776.4M' }
+    companies: {
+      'c1': { name: 'Postini', founded_year: 1999, total_money_raised: '$0' },
+      'c2': { name: 'Digg', founded_year: 2004, total_money_raised: '$45M' },
+      'c3': { name: 'Airbnb', founded_year: 2007, total_money_raised: '$120M' },
+      'c4': { name: 'TripIt', founded_year: 2006, total_money_raised: '$13.1M' },
+      'c5': { name: 'Twitter', founded_year: 2006, total_money_raised: '$1.16B' },
+      'c6': { name: 'Spotify', founded_year: 2006, total_money_raised: '$183M' },
+      'c7': { name: 'Airbnb', founded_year: 2008, total_money_raised: '$776.4M' }
     }
   }
 });
@@ -45,8 +45,7 @@ engine.build(function(err, connection) {
     .params({ year: 1999, term: '%air%' });*/
 
   var query = Query.of(Company)
-    .ql('SELECT name, foundedYear, worth ' +
-        'WHERE foundedYear >= @year AND name NOT LIKE @term ' +
+    .ql('WHERE foundedYear >= @year AND name NOT LIKE @term ' +
         'ORDER BY foundedYear DESC, name')
     .params({ year: 1999, term: '%air%' });
 
