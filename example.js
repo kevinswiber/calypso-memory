@@ -53,4 +53,8 @@ engine.build(function(err, connection) {
     console.log(companies);
     connection.close();
   });
+
+  /*session.get(Query.of(Company), 'c1', function(err, company) {
+    console.log(company);
+  });*/
 });

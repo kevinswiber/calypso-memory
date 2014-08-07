@@ -82,7 +82,8 @@ MemorySession.prototype.get = function(query, id, cb) {
 
   var config = query.modelConfig;
 
-  cb(null, db[id]);
+  var model = convertToModel(config, db[id], config.isBare); 
+  cb(null, model);
 };
 
 MemorySession.create = function(data, cache) {
