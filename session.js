@@ -12,6 +12,9 @@ function convertToModel(config, entity, isBare) {
   } else {
     obj = Object.create(config.constructor.prototype);
     var keys = Object.keys(config.fieldMap || {});
+    if (keys.length === 0) {
+      keys = Object.keys(entity);
+    }
     keys.forEach(function(key) {
       var prop = config.fieldMap[key] || key;
       if (key.indexOf('.') === -1) {
